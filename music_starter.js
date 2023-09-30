@@ -5,14 +5,53 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Helvetica'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(20);
-
+  strokeWeight(5)
   //  let bar_spacing = height / 10;
   //  let bar_height = width / 12;
   //  let bar_pos_x = width / 2;
 
   fill(255)
+  let blueColor = color(8, 183, 189);
+  let yellowColor = color(237, 203, 66);
+  let vocalLerpNumber = map (vocal, 0, 100, 0, 1)
+  let vocalColor = lerpColor(yellowColor, blueColor, vocalLerpNumber)
+  
+  strokeWeight(4)
+
+  let sizeOfBlock = 400;
+
+  for(let i = 1; i < sizeOfBlock; i++){
+   let gradentAmount = map(i, 0, sizeOfBlock, 0, 1)
+   let strokeColor = lerpColor(vocalColor, blueColor, gradentAmount)
+
+  stroke(strokeColor)
+   line(0, 100+i, width, 100+i)
+}
+
+let drumMap = map(drum, 0, 100, 5, 70);
+let lengthOfLine = 300;
+let lineStart = 100;
+let lineEnd = lineStart+lengthOfLine;
+stroke(drumMap,80,80);
+for(var i=1; i<= drumMap; i++){
+  var lineStep = i*20;
+  line (lineStart, lineStep, lineEnd, lineStep)
+}
+
   let EllipseSize = map(drum, 0, 100, 100, 200)
   let EllipseYOffset = map(vocal, 0, 300, 100, 250)
+
+  let baseWave = map(bass, 0, 100, 20, 120)
+  let waveHeight = baseWave;
+  let waveFreq = 8
+
+  let baseYLoki = height/2;
+  beginShape()
+  for(let i = 1; i < width; i++){
+   vertex(i, baseYLoki-waveHeight*sin(waveFreq * i))
+  }
+  endShape()
+
   ellipse(width/2, EllipseYOffset, EllipseSize, EllipseSize)
 
    // vocal bar is red
