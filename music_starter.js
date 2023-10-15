@@ -1,7 +1,7 @@
 let firstRun = true
 let bgImage;
-let fire;
-let Meteors = [];
+let stars = [];
+//let Meteors = [];
 //vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
@@ -32,46 +32,34 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 if (firstRun){
   rectMode(CENTER);
   bgImage = loadImage('bg.png');
+  stars.push(loadImage('stars_0.png'));
+  stars.push(loadImage('stars_1.png'));
+  stars.push(loadImage('stars_2.png'));
+  stars.push(loadImage('stars_3.png'));
+  stars.push(loadImage('stars_4.png'));
+  stars.push(loadImage('stars_5.png'));
 
   firstRun = false
 }
   image(bgImage, 0, 0)
 
+  var DrumFrame = int(map(drum, 0, 100, 0, 5));
+  console.log(DrumFrame);
+  push();
+  scale(0.7);
+  image(stars[DrumFrame], 950, 300)
+  pop();
 
-let bassMap = map(bass, 0, 100, 5, 70);
-let lengthOfLine = 300;
-let lineStart = 100;
+let bassMap = map(bass, 0, 100, 0, 20);
+let lengthOfLine = 30;
+let lineStart = 560;
 let lineEnd = lineStart+lengthOfLine;
-stroke(bassMap,80,80);
+stroke(65, 54, 103);
 for(var i=1; i<= bassMap; i++){
-  var lineStep = i*20;
-  line (lineStart, lineStep, lineEnd, lineStep)
+  var lineStep = i*15;
+  line (lineStart, lineStep+450, lineEnd, lineStep+450)
 }
 
-
-
-  // if (firstRun){
-  //   rectMode(CENTER);
-  //   Meteors.push(loadImage('meteors_0.png'));
-  //   Meteors.push(loadImage('meteors_1.png'));
-  //   Meteors.push(loadImage('meteors_2.png'));
-  //   Meteors.push(loadImage('meteors_3.png'));
-  //   // stars.push(loadImage('stars_4.png'));
-  //   // stars.push(loadImage('stars_5.png'));
-  
-  //   firstRun = false
-  // }
-  
-  // var DrumFrame = int(map(drum, 0, 100, 0, 6));
-  // console.log(DrumFrame);
-  // push();
-  // scale(0.5);
-  // image(Meteors[DrumFrame], width/2, height/2)
-  // pop();
-
-
-  // let EllipseSize = map(drum, 0, 100, 100, 200)
-  // let EllipseYOffset = map(vocal, 0, 300, 100, 250)
 
   // let baseWave = map(bass, 0, 100, 20, 120)
   // let waveHeight = baseWave;
@@ -84,7 +72,10 @@ for(var i=1; i<= bassMap; i++){
   // }
   // endShape()
 
-  // ellipse(width/2, EllipseYOffset, EllipseSize, EllipseSize)
+  // let EllipseSize = map(drum, 0, 100, 100, 200)
+  // let EllipseYOffset = map(vocal, 0, 300, 100, 250)
+  //ellipse(width/2, EllipseYOffset, EllipseSize, EllipseSize)
+
 
    // vocal bar is red
 //    fill(200, 0, 0);
