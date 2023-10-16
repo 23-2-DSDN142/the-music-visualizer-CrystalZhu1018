@@ -13,6 +13,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   //  let bar_height = width / 12;
   //  let bar_pos_x = width / 2;
 
+
+//background
   let blueColor = color(45, 64, 139);
   let purpleColor = color(111, 75, 138);
   let pinkColor = color(169, 94, 143);
@@ -29,6 +31,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    line(0, 100+i, width, 100+i)
 }
 
+
+//images
 if (firstRun){
   rectMode(CENTER);
   bgImage = loadImage('bg.png');
@@ -50,6 +54,8 @@ if (firstRun){
   image(stars[DrumFrame], 950, 300)
   pop();
 
+
+//loops
 let bassMap = map(bass, 0, 100, 0, 20);
 let lengthOfLine = 30;
 let lineStart = 560;
@@ -58,6 +64,26 @@ stroke(65, 54, 103);
 for(var i=1; i<= bassMap; i++){
   var lineStep = i*15;
   line (lineStart, lineStep+450, lineEnd, lineStep+450)
+}
+
+let drumMap = map(drum, 0, 100, 0, 15);
+let lengthOfLine2 = 40;
+let line2Start = 760;
+let line2End = line2Start+lengthOfLine2;
+stroke(156, 138, 166);
+for(var i=1; i<= drumMap; i++){
+  var line2Step = i*15;
+  line (line2Start, line2Step+530, line2End, line2Step+530)
+}
+
+let otherMap = map(other, 0, 100, 0, 8);
+let lengthOfLine3 = 58;
+let line3Start = 1156;
+let line3End = line3Start+lengthOfLine3;
+stroke(123, 99, 141);
+for(var i=1; i<= otherMap; i++){
+  var line3Step = i*15;
+  line (line3Start, line3Step+600, line3End, line3Step+600)
 }
 
 
