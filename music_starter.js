@@ -1,7 +1,7 @@
 let firstRun = true
 let bgImage;
 let stars = [];
-//let Meteors = [];
+let Meteors = [];
 //vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
@@ -36,6 +36,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 if (firstRun){
   rectMode(CENTER);
   bgImage = loadImage('bg.png');
+
   stars.push(loadImage('stars_0.png'));
   stars.push(loadImage('stars_1.png'));
   stars.push(loadImage('stars_2.png'));
@@ -43,8 +44,38 @@ if (firstRun){
   stars.push(loadImage('stars_4.png'));
   stars.push(loadImage('stars_5.png'));
 
+  Meteors.push(loadImage('meteors_0.png'));
+  Meteors.push(loadImage('meteors_1.png'));
+  Meteors.push(loadImage('meteors_2.png'));
+  Meteors.push(loadImage('meteors_3.png'));
+  Meteors.push(loadImage('meteors_4.png'));
+  Meteors.push(loadImage('meteors_5.png'));
+  Meteors.push(loadImage('meteors_6.png'));
+  Meteors.push(loadImage('meteors_7.png'));
+  Meteors.push(loadImage('meteors_8.png'));
+  Meteors.push(loadImage('meteors_9.png'));
+  Meteors.push(loadImage('meteors_10.png'));
+  Meteors.push(loadImage('meteors_11.png'));
+  Meteors.push(loadImage('meteors_12.png'));
+  Meteors.push(loadImage('meteors_13.png'));
+  Meteors.push(loadImage('meteors_14.png'));
+  Meteors.push(loadImage('meteors_15.png'));
+  Meteors.push(loadImage('meteors_16.png'));
+  Meteors.push(loadImage('meteors_17.png'));
+  Meteors.push(loadImage('meteors_18.png'));
+  Meteors.push(loadImage('meteors_19.png'));
+  Meteors.push(loadImage('meteors_20.png'));
+  Meteors.push(loadImage('meteors_21.png'));
+
   firstRun = false
 }
+  var vocalFrame = int(map(vocal, 0, 100, 0, 21));
+  console.log(vocalFrame);
+  push();
+  scale(0.4);
+  image(Meteors[vocalFrame], 500, 200)
+  pop();
+
   image(bgImage, 0, 0)
 
   var DrumFrame = int(map(drum, 0, 100, 0, 5));
@@ -53,6 +84,7 @@ if (firstRun){
   scale(0.7);
   image(stars[DrumFrame], 950, 300)
   pop();
+
 
 
 //loops
