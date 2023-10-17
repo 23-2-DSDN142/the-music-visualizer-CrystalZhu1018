@@ -93,8 +93,8 @@ if (firstRun){
   var drumFrame = int(map(drum, 0, 100, 0, 21));
   console.log(drumFrame);
   push();
-  scale(0.1);
-  image(Meteors[drumFrame], 3700, 1000)
+  scale(0.2);
+  image(Meteors[drumFrame], 1300, 480)
   pop();
 
   image(Background2, 0, 0)//buildings
