@@ -1,7 +1,9 @@
 let firstRun = true
-let bgImage;
+let Background;
+let Background2;
+let Water = [];
 let stars = [];
-let Meteors = [];
+//let Meteors = [];
 //vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
@@ -35,7 +37,14 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
 //images
 if (firstRun){
   rectMode(CENTER);
-  bgImage = loadImage('bg.png');
+  Background = loadImage('bg.png');
+  Background2 = loadImage('bg2.png');
+
+  Water.push(loadImage('water_0.png'));
+  Water.push(loadImage('water_1.png'));
+  Water.push(loadImage('water_2.png'));
+  Water.push(loadImage('water_3.png'));
+  Water.push(loadImage('water_4.png'));
 
   stars.push(loadImage('stars_0.png'));
   stars.push(loadImage('stars_1.png'));
@@ -44,53 +53,52 @@ if (firstRun){
   stars.push(loadImage('stars_4.png'));
   stars.push(loadImage('stars_5.png'));
 
-  Meteors.push(loadImage('meteors_0.png'));
-  Meteors.push(loadImage('meteors_1.png'));
-  Meteors.push(loadImage('meteors_2.png'));
-  Meteors.push(loadImage('meteors_3.png'));
-  Meteors.push(loadImage('meteors_4.png'));
-  Meteors.push(loadImage('meteors_5.png'));
-  Meteors.push(loadImage('meteors_6.png'));
-  Meteors.push(loadImage('meteors_7.png'));
-  Meteors.push(loadImage('meteors_8.png'));
-  Meteors.push(loadImage('meteors_9.png'));
-  Meteors.push(loadImage('meteors_10.png'));
-  Meteors.push(loadImage('meteors_11.png'));
-  Meteors.push(loadImage('meteors_12.png'));
-  Meteors.push(loadImage('meteors_13.png'));
-  Meteors.push(loadImage('meteors_14.png'));
-  Meteors.push(loadImage('meteors_15.png'));
-  Meteors.push(loadImage('meteors_16.png'));
-  Meteors.push(loadImage('meteors_17.png'));
-  Meteors.push(loadImage('meteors_18.png'));
-  Meteors.push(loadImage('meteors_19.png'));
-  Meteors.push(loadImage('meteors_20.png'));
-  Meteors.push(loadImage('meteors_21.png'));
+  // Meteors.push(loadImage('meteors_0.png'));
+  // Meteors.push(loadImage('meteors_1.png'));
+  // Meteors.push(loadImage('meteors_2.png'));
+  // Meteors.push(loadImage('meteors_3.png'));
+  // Meteors.push(loadImage('meteors_4.png'));
+  // Meteors.push(loadImage('meteors_5.png'));
+  // Meteors.push(loadImage('meteors_6.png'));
+  // Meteors.push(loadImage('meteors_7.png'));
+  // Meteors.push(loadImage('meteors_8.png'));
+  // Meteors.push(loadImage('meteors_9.png'));
+  // Meteors.push(loadImage('meteors_10.png'));
+  // Meteors.push(loadImage('meteors_11.png'));
+  // Meteors.push(loadImage('meteors_12.png'));
+  // Meteors.push(loadImage('meteors_13.png'));
+  // Meteors.push(loadImage('meteors_14.png'));
+  // Meteors.push(loadImage('meteors_15.png'));
+  // Meteors.push(loadImage('meteors_16.png'));
+  // Meteors.push(loadImage('meteors_17.png'));
+  // Meteors.push(loadImage('meteors_18.png'));
+  // Meteors.push(loadImage('meteors_19.png'));
+  // Meteors.push(loadImage('meteors_20.png'));
+  // Meteors.push(loadImage('meteors_21.png'));
 
   firstRun = false
 }
-  var vocalFrame = int(map(vocal, 0, 100, 0, 21));
-  console.log(vocalFrame);
-  push();
-  scale(0.4);
-  image(Meteors[vocalFrame], 500, 200)
-  pop();
+  // var vocalFrame = int(map(vocal, 0, 100, 0, 21));
+  // console.log(vocalFrame);
+  // push();
+  // scale(0.4);
+  // image(Meteors[vocalFrame], 500, 200)
+  // pop();
+  //scale(0.5);
 
-  image(bgImage, 0, 0)
+  image(Background2, 0, 0)//buildings
 
   var DrumFrame = int(map(drum, 0, 100, 0, 5));
   console.log(DrumFrame);
   push();
   scale(0.7);
   image(stars[DrumFrame], 950, 300)
-  pop();
-
-
+  pop(); 
 
 //loops
 let bassMap = map(bass, 0, 100, 0, 20);
 let lengthOfLine = 30;
-let lineStart = 560;
+let lineStart = 563;
 let lineEnd = lineStart+lengthOfLine;
 stroke(65, 54, 103);
 for(var i=1; i<= bassMap; i++){
@@ -100,7 +108,7 @@ for(var i=1; i<= bassMap; i++){
 
 let drumMap = map(drum, 0, 100, 0, 15);
 let lengthOfLine2 = 40;
-let line2Start = 760;
+let line2Start = 765;
 let line2End = line2Start+lengthOfLine2;
 stroke(156, 138, 166);
 for(var i=1; i<= drumMap; i++){
@@ -118,6 +126,14 @@ for(var i=1; i<= otherMap; i++){
   line (line3Start, line3Step+600, line3End, line3Step+600)
 }
 
+var VocalFrame = int(map(vocal, 0, 100, 0, 4));
+console.log(VocalFrame);
+push();
+scale(0.667);
+image(Water[VocalFrame], 0, 0)
+pop();
+
+image(Background, 0, 0)//ground
 
   // let baseWave = map(bass, 0, 100, 20, 120)
   // let waveHeight = baseWave;
