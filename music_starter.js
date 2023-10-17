@@ -3,17 +3,17 @@ let Background;
 let Background2;
 let Water = [];
 let stars = [];
-//let Meteors = [];
+let ColourStars = [];
+let ColourStars2 = [];
+let Meteors = [];
+
 //vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
-  textFont('Helvetica'); // please use CSS safe fonts
+  background(30)
+  textFont('BrushScriptMT'); // please use CSS safe fonts,Garamond
   rectMode(CENTER)
-  textSize(20);
-  strokeWeight(5)
-  //  let bar_spacing = height / 10;
-  //  let bar_height = width / 12;
-  //  let bar_pos_x = width / 2;
+  textSize(16);
+  strokeWeight(2)
 
 
 //background
@@ -53,38 +53,49 @@ if (firstRun){
   stars.push(loadImage('stars_4.png'));
   stars.push(loadImage('stars_5.png'));
 
-  // Meteors.push(loadImage('meteors_0.png'));
-  // Meteors.push(loadImage('meteors_1.png'));
-  // Meteors.push(loadImage('meteors_2.png'));
-  // Meteors.push(loadImage('meteors_3.png'));
-  // Meteors.push(loadImage('meteors_4.png'));
-  // Meteors.push(loadImage('meteors_5.png'));
-  // Meteors.push(loadImage('meteors_6.png'));
-  // Meteors.push(loadImage('meteors_7.png'));
-  // Meteors.push(loadImage('meteors_8.png'));
-  // Meteors.push(loadImage('meteors_9.png'));
-  // Meteors.push(loadImage('meteors_10.png'));
-  // Meteors.push(loadImage('meteors_11.png'));
-  // Meteors.push(loadImage('meteors_12.png'));
-  // Meteors.push(loadImage('meteors_13.png'));
-  // Meteors.push(loadImage('meteors_14.png'));
-  // Meteors.push(loadImage('meteors_15.png'));
-  // Meteors.push(loadImage('meteors_16.png'));
-  // Meteors.push(loadImage('meteors_17.png'));
-  // Meteors.push(loadImage('meteors_18.png'));
-  // Meteors.push(loadImage('meteors_19.png'));
-  // Meteors.push(loadImage('meteors_20.png'));
-  // Meteors.push(loadImage('meteors_21.png'));
+  ColourStars.push(loadImage('colourS_0.png'));
+  ColourStars.push(loadImage('colourS_1.png'));
+  ColourStars.push(loadImage('colourS_2.png'));
+  ColourStars.push(loadImage('colourS_3.png'));
+  ColourStars.push(loadImage('colourS_4.png'));
+
+  ColourStars2.push(loadImage('colourS2_0.png'));
+  ColourStars2.push(loadImage('colourS2_1.png'));
+  ColourStars2.push(loadImage('colourS2_2.png'));
+  ColourStars2.push(loadImage('colourS2_3.png'));
+  ColourStars2.push(loadImage('colourS2_4.png'));
+
+  Meteors.push(loadImage('meteors_0.png'));
+  Meteors.push(loadImage('meteors_1.png'));
+  Meteors.push(loadImage('meteors_2.png'));
+  Meteors.push(loadImage('meteors_3.png'));
+  Meteors.push(loadImage('meteors_4.png'));
+  Meteors.push(loadImage('meteors_5.png'));
+  Meteors.push(loadImage('meteors_6.png'));
+  Meteors.push(loadImage('meteors_7.png'));
+  Meteors.push(loadImage('meteors_8.png'));
+  Meteors.push(loadImage('meteors_9.png'));
+  Meteors.push(loadImage('meteors_10.png'));
+  Meteors.push(loadImage('meteors_11.png'));
+  Meteors.push(loadImage('meteors_12.png'));
+  Meteors.push(loadImage('meteors_13.png'));
+  Meteors.push(loadImage('meteors_14.png'));
+  Meteors.push(loadImage('meteors_15.png'));
+  Meteors.push(loadImage('meteors_16.png'));
+  Meteors.push(loadImage('meteors_17.png'));
+  Meteors.push(loadImage('meteors_18.png'));
+  Meteors.push(loadImage('meteors_19.png'));
+  Meteors.push(loadImage('meteors_20.png'));
+  Meteors.push(loadImage('meteors_21.png'));
 
   firstRun = false
 }
-  // var vocalFrame = int(map(vocal, 0, 100, 0, 21));
-  // console.log(vocalFrame);
-  // push();
-  // scale(0.4);
-  // image(Meteors[vocalFrame], 500, 200)
-  // pop();
-  //scale(0.5);
+  var drumFrame = int(map(drum, 0, 100, 0, 21));
+  console.log(drumFrame);
+  push();
+  scale(0.1);
+  image(Meteors[drumFrame], 3700, 1000)
+  pop();
 
   image(Background2, 0, 0)//buildings
 
@@ -94,6 +105,20 @@ if (firstRun){
   scale(0.7);
   image(stars[DrumFrame], 950, 300)
   pop(); 
+
+  var BassFrame = int(map(bass, 0, 100, 0, 4));
+  console.log(BassFrame);
+  push();
+  scale(0.667);
+  image(ColourStars[BassFrame], 0, 0)
+  pop();
+
+  var OtherFrame = int(map(other, 0, 100, 0, 4));
+  console.log(OtherFrame);
+  push();
+  scale(0.667);
+  image(ColourStars2[OtherFrame], 0, 10)
+  pop();
 
 //loops
 let bassMap = map(bass, 0, 100, 0, 20);
@@ -135,60 +160,10 @@ pop();
 
 image(Background, 0, 0)//ground
 
-  // let baseWave = map(bass, 0, 100, 20, 120)
-  // let waveHeight = baseWave;
-  // let waveFreq = 8
-
-  // let baseYLoki = height/2;
-  // beginShape()
-  // for(let i = 1; i < width; i++){
-  //  vertex(i, baseYLoki-waveHeight*sin(waveFreq * i))
-  // }
-  // endShape()
-
-  // let EllipseSize = map(drum, 0, 100, 100, 200)
-  // let EllipseYOffset = map(vocal, 0, 300, 100, 250)
-  //ellipse(width/2, EllipseYOffset, EllipseSize, EllipseSize)
 
 
-   // vocal bar is red
-//    fill(200, 0, 0);
-//    rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-//    fill(0);
-//    text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-//    // drum bar is green
-//    fill(0, 200, 0);
-//    rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-//    fill(0);
-//    text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-//    // bass bar is blue
-//    fill(50, 50, 240);
-//    rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-//    fill(0);
-//    text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-//    // other bar is white
-//    fill(200, 200, 200);
-//    rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-//    fill(0);
-//    text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-//    fill(255, 255, 0);
- 
-   // display "words"
-   textAlign(CENTER);
-   textSize(vocal);
-   text(words, width/2, height/3);
+// display "words"
+textAlign(CENTER);
+textSize(vocal);
+text(words, width/2.5, height/2.7);
 }
-
-// function draw_one_frame(words, vocal, drum, bass, other, counter) {
-//   background(225);
- 
-// var drumHeight = map(drum, 0, 100, 0+ballSize/2, height);
-
-// var ballSize = map(vocal, 0, 100, 40, 150);
-
-// fill(5);
-// ellipse(width/2, drumHeight, ballSize);
-// }
